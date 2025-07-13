@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Search, Mic, Camera, Grid3X3, User } from 'lucide-react'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
@@ -6,11 +7,11 @@ import { Input } from './ui/input'
 export default function GoogleHomepage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
+  const navigate = useNavigate()
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
-      // Navigate to search results (will implement later)
-      console.log('Searching for:', searchQuery)
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
     }
   }
 
